@@ -1,6 +1,4 @@
-# Adonis API application
-
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+# WEB SERVICE API GATEWAY
 
 1. Bodyparser
 2. Authentication
@@ -10,14 +8,13 @@ This is the boilerplate for creating an API server in AdonisJs, it comes pre-con
 
 ## Setup
 
-Use the adonis command to install the blueprint
+ manually clone the repo and then run `npm install`.
 
-```bash
-adonis new yardstick --api-only
+## Run Application
+```js
+adonis serve --dev
+
 ```
-
-or manually clone the repo and then run `npm install`.
-
 
 ### Migrations
 
