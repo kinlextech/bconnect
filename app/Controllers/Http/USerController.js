@@ -8,6 +8,7 @@ const Encryption = use('Encryption');
 const { validate } = use('Validator')
 const Token = use('App/Models/Token')
 const USERMAST = use('App/Models/User')
+const Database = use('Database')
 class USerController {
 
     /*
@@ -19,10 +20,22 @@ class USerController {
         var USER_NAME = username
         var US_PASSWORD = password
         try {
-            return await auth.withRefreshToken().attempt(USER_NAME, US_PASSWORD);
+            /// check user logined
+            // const tkres = await Token.getMax('created_at')
+            const tkres = await Token.query().where('user_id',USER_NAME).where('is_revoked',0).fetch()
+            if(tkres.rows != ''){
+                return response.json({status:'00',message:'USER_AREADY_LOGIN',SSID:tkres.rows[0]['token']})
+            }else{
+                return await auth.withRefreshToken().attempt(USER_NAME, US_PASSWORD);
+            }
         } catch (e) {
             return response.json(e)
         }
+    }
+    async uprofile({ request, auth, response }){
+        const { username } = request.all()
+        const rst = await USERMAST.findByOrFail('user_id',username)
+        return response.json(rst)
     }
 
     async logout({ request, response, auth }) {
@@ -34,7 +47,8 @@ class USerController {
                 return response.json(aa)
             }
         } catch (e) {
-            return response.json('asdfasdf')
+            // return response.json(check)
+            console.log(e)
         }
     }
 
