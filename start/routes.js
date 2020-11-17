@@ -20,6 +20,23 @@ const Route = use('Route')
 
 Route.group('', function () {
   Route.post('/login', 'UserController.login').validator('user_loginvalidate')
+<<<<<<< HEAD
   Route.post('/logout', 'UserController.logout')
   Route.post('/register', 'UserController.register').validator('user_register')
 }).prefix('api/v1')
+=======
+  Route.get('/uprofile', 'UserController.uprofile')
+  Route.post('/logout', 'UserController.logout')
+  Route.post('/register', 'UserController.register').validator('user_register')
+}).prefix('api/v1/auth')
+
+Route.group('', function () {
+  Route.get('/detail/:id', 'Biller/WaterController.detail')
+}).prefix('api/v1/biller/water')
+
+
+Route.group('',function(){
+  // top up utility payment
+  Route.post('/upayment','Fexc/UlityPaymentController.payment')
+}).prefix('api/v1/FCServ')
+>>>>>>> master
