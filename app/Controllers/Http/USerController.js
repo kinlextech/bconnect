@@ -8,10 +8,9 @@ const Encryption = use('Encryption');
 const { validate } = use('Validator')
 const Token = use('App/Models/Token')
 const USERMAST = use('App/Models/User')
-<<<<<<< HEAD
-=======
+
 const Database = use('Database')
->>>>>>> master
+
 class USerController {
 
     /*
@@ -23,13 +22,6 @@ class USerController {
         var USER_NAME = username
         var US_PASSWORD = password
         try {
-<<<<<<< HEAD
-            return await auth.withRefreshToken().attempt(USER_NAME, US_PASSWORD);
-        } catch (e) {
-            return response.json(e)
-        }
-    }
-=======
             /// check user logined
             // const tkres = await Token.getMax('created_at')
             // const tkres = await Token.query().where('user_id',USER_NAME).where('is_revoked',0).fetch()
@@ -47,7 +39,6 @@ class USerController {
         const rst = await USERMAST.findByOrFail('user_id','laithong')
         return response.json({profile:rst})
     }
->>>>>>> master
 
     async logout({ request, response, auth }) {
         try {
@@ -58,12 +49,8 @@ class USerController {
                 return response.json(aa)
             }
         } catch (e) {
-<<<<<<< HEAD
-            return response.json('asdfasdf')
-=======
             // return response.json(check)
             console.log(e)
->>>>>>> master
         }
     }
 
