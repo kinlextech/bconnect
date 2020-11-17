@@ -22,20 +22,20 @@ class USerController {
         try {
             /// check user logined
             // const tkres = await Token.getMax('created_at')
-            const tkres = await Token.query().where('user_id',USER_NAME).where('is_revoked',0).fetch()
-            if(tkres.rows != ''){
-                return response.json({status:'00',message:'USER_AREADY_LOGIN',SSID:tkres.rows[0]['token']})
-            }else{
-                return await auth.withRefreshToken().attempt(USER_NAME, US_PASSWORD);
-            }
-        } catch (e) {
+            // const tkres = await Token.query().where('user_id',USER_NAME).where('is_revoked',0).fetch()
+            // if(tkres.rows != ''){
+            //     return response.json({status:'00',message:'USER_AREADY_LOGIN',SSID:tkres.rows[0]['token']})
+            // }else{
+                // }
+                    return await auth.withRefreshToken().attempt(USER_NAME, US_PASSWORD);
+            } catch (e) {
             return response.json(e)
         }
     }
     async uprofile({ request, auth, response }){
         const { username } = request.all()
-        const rst = await USERMAST.findByOrFail('user_id',username)
-        return response.json(rst)
+        const rst = await USERMAST.findByOrFail('user_id','laithong')
+        return response.json({profile:rst})
     }
 
     async logout({ request, response, auth }) {

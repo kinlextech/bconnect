@@ -28,3 +28,9 @@ Route.group('', function () {
 Route.group('', function () {
   Route.get('/detail/:id', 'Biller/WaterController.detail')
 }).prefix('api/v1/biller/water')
+
+
+Route.group('',function(){
+  // top up utility payment
+  Route.post('/upayment','Fexc/UlityPaymentController.payment')
+}).prefix('api/v1/FCServ')
