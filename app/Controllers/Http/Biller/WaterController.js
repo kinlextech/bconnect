@@ -4,14 +4,14 @@ const Env = use('Env')
 const Axios = require('axios')
 class WaterController {
 
-    async detail({rquest,response}){
-        const ret = await Axios.get(Env.get('API_URL_BWTP')+'/clients/detail/',{
+    async detail({params,response}){
+        const ret = await Axios.get(Env.get('API_URL_BWTP')+'/clients/detail/'+params.id,{
             headers: {
-                'Auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IlUyRnNkR1ZrWDErbFlDSFR5YmwwTWlhNEs3dllUSkU0bjMwdk51cXBzcVVMSTY3SXZyNFl6S1FpbXhXTCtqZE92MnlMK2JyT3dLZEYyRG9ETFRZS0Y4bkk1SFhPVzVSdTh1TDVZN0tWRFhDYWNOajVhUS9ldWpaaXgyVnRqaG9rM1l3Y0NDMS9ZSTh4ZXRkSEM1TG9qUT09IiwiaWF0IjoxNjA1NDY5NDE4LCJleHAiOjE2MDU1NTU4MTh9.n70ucPyKpNApGXtRHf0eT0gf-1fasgfAOmr2BaI27SY'
+                'Auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IlUyRnNkR1ZrWDErcnVVeER5Y01lbUJ2bmgvYWNJRi9JQWN6UGNjNGpvQWwvVmZmY1hpaXUyZzdjWU1UeThDb3ZjRlVhcSs4cUJFZ0Z2ZFp5NCs0NXBNZWhFK1pnTEo3RVRHQklWcFExenYwQ3AvU2tXeDQ2WUMwWDJ1VjVrWnNWeVMvSmtQeVdGaFdLZVpGR0w0U0R4UT09IiwiaWF0IjoxNjA1NTk2ODQ4LCJleHAiOjE2MDU2ODMyNDh9.iNha3ZnpniBIRIFv6arac7T_cjHR6--HKOlhR8s4Nv4'
               }
+        }).then((res)=> {
+            return response.json(res.data)
         })
-
-        return response.json(ret)
     }
 }
 

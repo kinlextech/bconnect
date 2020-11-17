@@ -33,4 +33,6 @@ Route.group('', function () {
 Route.group('',function(){
   // top up utility payment
   Route.post('/upayment','Fexc/UlityPaymentController.payment')
+  // Account detail
+  Route.get('/accountDetail/:accno','Fexc/AccountController.detail')
 }).prefix('api/v1/FCServ')
